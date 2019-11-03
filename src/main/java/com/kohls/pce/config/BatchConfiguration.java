@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-@EnableBatchProcessing
 @ComponentScan(basePackages = {"com.kohls.pce.tasklet","com.kohls.pce.service","com.kohls.pce.dao"})
 public class BatchConfiguration {
 
