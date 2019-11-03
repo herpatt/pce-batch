@@ -36,9 +36,9 @@ public class DbConfig {
 	public NamedParameterJdbcTemplate namedJdbcTemplate(DataSource dataSource) {
 		return new NamedParameterJdbcTemplate(dataSource);
 	}
-
-	@Bean
-	public PlatformTransactionManager getTransactionManager() {
+/*
+	@Bean("pceTransactionManager")
+	public PlatformTransactionManager transactionManager() {
 		return new ResourcelessTransactionManager();
-	}
+	}*/
 }

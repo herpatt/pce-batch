@@ -27,15 +27,17 @@ public class PersonChangeDaoImpl implements PersonChangeDao {
 	@Override
 	public List<PriceChange> findAllPCE(BigInteger startPageNumber,BigInteger pageSize,PriceChange priceChange) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
-		return namedParameterJdbcTemplate.query("",paramMap, new PriceChangeMapper());
+		return namedParameterJdbcTemplate.query("SELECT * from tablename order by f1,f2 limit :pageSize, :pageCount",paramMap, new PriceChangeMapper());
 	}
 
 	@Override
 	public boolean updatePCE(List<PriceChange> priceChangeList) {
-		for( PriceChange priceChange :  priceChangeList ) {
-			Map<String, Object> paramMap = new HashMap<String, Object>();
-			paramMap.put("eventCode", priceChange.getEventCategoryCode());
-			namedParameterJdbcTemplate.update("", paramMap);			
+		if( priceChangeList != null ) {
+			for( PriceChange priceChange :  priceChangeList ) {
+				Map<String, Object> paramMap = new HashMap<String, Object>();
+				paramMap.put("eventCode", priceChange.getEventCategoryCode());
+				namedParameterJdbcTemplate.update("UPDATE QUERY", paramMap);			
+			}			
 		}
 		return true;
 	}

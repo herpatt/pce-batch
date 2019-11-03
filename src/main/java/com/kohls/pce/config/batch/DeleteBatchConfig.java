@@ -9,27 +9,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.kohls.pce.tasklet.PriceChangeTasklet;
+import com.kohls.pce.tasklet.DeleteTasklet;
 
 @Configuration
-public class PriceChangeBatchConfig {
+public class DeleteBatchConfig {
 
 	@Autowired
 	private JobBuilderFactory jobs;
 
 	@Autowired
 	private StepBuilderFactory steps;
-	
-	@Autowired
-	PriceChangeTasklet priceChangeTasklet;
 
+	@Autowired
+	DeleteTasklet deleteTasklet;
+	
 	@Bean
-	public Step priceChangeStep() {
-		return steps.get("priceChangeStep").tasklet(priceChangeTasklet).build();
+	public Step deleteTaskletStep() {
+		return steps.get("deleteJobStep").tasklet(deleteTasklet).build();
 	}
 
-	@Bean("priceChangeJob")
-	public Job priceChangeJob() {
-		return jobs.get("priceChangeJob").incrementer(new RunIdIncrementer()).start(priceChangeStep()).build();
+	@Bean("deleteJob")
+	public Job deleteJob() {
+		return jobs.get("deleteJob").incrementer(new RunIdIncrementer()).start(deleteTaskletStep()).build();
 	}
 }
