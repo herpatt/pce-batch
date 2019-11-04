@@ -1,5 +1,7 @@
-package com.kohls.pce.config.batch.events;
+package com.kohls.pce.batch.events;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +13,7 @@ import org.springframework.batch.item.database.Order;
 import org.springframework.batch.item.database.PagingQueryProvider;
 import org.springframework.batch.item.database.support.MySqlPagingQueryProvider;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.RowMapper;
 
 import com.kohls.pce.model.PriceChange;
 
@@ -25,11 +28,22 @@ public class PriceChangeReader {
 
 		PagingQueryProvider queryProvider = createQueryProvider();
 		priceChangeReader.setQueryProvider(queryProvider);
-
-		priceChangeReader.setRowMapper(new BeanPropertyRowMapper<>(PriceChange.class));
-
+		
+		priceChangeReader.setRowMapper(new PriceChangeMapper());
+		
 		return priceChangeReader;
 	}
+	
+	class PriceChangeMapper implements RowMapper<PriceChange> {
+        @Override
+        public PriceChange mapRow(ResultSet rs, int rowNum) throws SQLException {
+        	PriceChange priceChange = new PriceChange();
+        	priceChange.setEventCode(rs.getString("evnt_cde"));
+        	priceChange.setEventCode(rs.getString("str_nbr"));
+        	priceChange.setEventCode(rs.getString("sku_nbr"));
+        	return priceChange;
+        }
+	}	
 
 	private PagingQueryProvider createQueryProvider() {
 		MySqlPagingQueryProvider queryProvider = new MySqlPagingQueryProvider();
