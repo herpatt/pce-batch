@@ -1,4 +1,4 @@
-package com.kohls.pce.config.batch.events;
+package com.kohls.pce.batch.events;
 
 import java.util.HashMap;
 import java.util.Map;

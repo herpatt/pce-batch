@@ -14,9 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.kohls.pce.config.batch.events.PriceChangeProcessor;
-import com.kohls.pce.config.batch.events.PriceChangeReader;
-import com.kohls.pce.config.batch.events.PriceChangeWriter;
+import com.kohls.pce.batch.events.PriceChangeProcessor;
+import com.kohls.pce.batch.events.PriceChangeReader;
+import com.kohls.pce.batch.events.PriceChangeWriter;
 import com.kohls.pce.model.PriceChange;
 
 @Configuration
