@@ -25,6 +25,10 @@ public class PceBatchApplication implements CommandLineRunner {
 	@Autowired
 	@Qualifier("deleteJob")
 	Job deleteJob;	
+	
+	@Autowired
+	@Qualifier("priceChangeReaderWriterJob")
+	Job priceChangeReaderWriterJob;		
 
 	public static void main(String[] args) {
 		SpringApplication.run(PceBatchApplication.class, args);
@@ -35,6 +39,6 @@ public class PceBatchApplication implements CommandLineRunner {
 		JobParameters params = new JobParametersBuilder().addString("JobID", String.valueOf(System.currentTimeMillis())).toJobParameters();
 		//jobLauncher.run(priceChangeJob, params);
 		
-		jobLauncher.run(deleteJob, params);
+		jobLauncher.run(priceChangeReaderWriterJob, params);
 	}
 }
