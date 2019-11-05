@@ -23,8 +23,8 @@ public class PceBatchApplication implements CommandLineRunner {
 	Job priceChangeJob;
 	
 	@Autowired
-	@Qualifier("deleteJob")
-	Job deleteJob;	
+	@Qualifier("loadPriceChangeJob")
+	Job loadPriceChangeJob;	
 	
 	@Autowired
 	@Qualifier("priceChangeReaderWriterJob")
@@ -37,8 +37,8 @@ public class PceBatchApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		JobParameters params = new JobParametersBuilder().addString("JobID", String.valueOf(System.currentTimeMillis())).toJobParameters();
-		//jobLauncher.run(priceChangeJob, params);
 		
+		//jobLauncher.run(loadPriceChangeJob, params);
 		jobLauncher.run(priceChangeReaderWriterJob, params);
 	}
 }

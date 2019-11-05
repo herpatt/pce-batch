@@ -10,11 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.kohls.pce.tasklet.DeleteTasklet;
+import com.kohls.pce.tasklet.LoadPriceChangeTasklet;
 
 @Configuration
 @EnableBatchProcessing
-public class DeleteBatchConfig {
+public class LoadPriceChangeConfig {
 
 	@Autowired
 	private JobBuilderFactory jobs;
@@ -23,15 +23,15 @@ public class DeleteBatchConfig {
 	private StepBuilderFactory steps;
 
 	@Autowired
-	DeleteTasklet deleteTasklet;
+	LoadPriceChangeTasklet loadPriceChangeTasklet;
 	
 	@Bean
-	public Step deleteTaskletStep() {
-		return steps.get("deleteJobStep").tasklet(deleteTasklet).build();
+	public Step loadPriceChangeTaskletStep() {
+		return steps.get("loadPriceChangeJobStep").tasklet(loadPriceChangeTasklet).build();
 	}
 
-	@Bean("deleteJob")
-	public Job deleteJob() {
-		return jobs.get("deleteJob").incrementer(new RunIdIncrementer()).start(deleteTaskletStep()).build();
+	@Bean("loadPriceChangeJob")
+	public Job loadPriceChangeJob() {
+		return jobs.get("loadPriceChangeJob").incrementer(new RunIdIncrementer()).start(loadPriceChangeTaskletStep()).build();
 	}
 }

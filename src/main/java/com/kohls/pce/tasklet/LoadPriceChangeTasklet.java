@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import com.kohls.pce.service.PersonChangeService;
 
 @Component
-public class DeleteTasklet implements Tasklet {
+public class LoadPriceChangeTasklet implements Tasklet {
 
 	@Autowired
 	PersonChangeService personChangeService;
