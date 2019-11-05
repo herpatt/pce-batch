@@ -12,7 +12,6 @@ import org.springframework.batch.item.database.JdbcPagingItemReader;
 import org.springframework.batch.item.database.Order;
 import org.springframework.batch.item.database.PagingQueryProvider;
 import org.springframework.batch.item.database.support.MySqlPagingQueryProvider;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.kohls.pce.model.PriceChange;
@@ -28,9 +27,9 @@ public class PriceChangeReader {
 
 		PagingQueryProvider queryProvider = createQueryProvider();
 		priceChangeReader.setQueryProvider(queryProvider);
-		
+
 		priceChangeReader.setRowMapper(new PriceChangeMapper());
-		
+
 		return priceChangeReader;
 	}
 	
@@ -43,7 +42,7 @@ public class PriceChangeReader {
         	priceChange.setEventCode(rs.getString("sku_nbr"));
         	return priceChange;
         }
-	}	
+	}		
 
 	private PagingQueryProvider createQueryProvider() {
 		MySqlPagingQueryProvider queryProvider = new MySqlPagingQueryProvider();
