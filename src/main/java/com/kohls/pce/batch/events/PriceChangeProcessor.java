@@ -8,7 +8,7 @@ public class PriceChangeProcessor implements ItemProcessor<PriceChange, PriceCha
 	
     @Override
     public PriceChange process(PriceChange priceChange) throws Exception {
-        System.out.println("PriceChangeProcessor :: process :: called");
+        System.out.println("PriceChangeProcessor :: process :: called::"+priceChange);
     	return priceChange;
     }
  }

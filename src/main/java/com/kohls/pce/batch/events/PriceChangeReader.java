@@ -23,7 +23,7 @@ public class PriceChangeReader {
 		JdbcPagingItemReader<PriceChange> priceChangeReader = new JdbcPagingItemReader<>();
 
 		priceChangeReader.setDataSource(dataSource);
-		priceChangeReader.setPageSize(2);
+		priceChangeReader.setPageSize(25);
 
 		PagingQueryProvider queryProvider = createQueryProvider();
 		priceChangeReader.setQueryProvider(queryProvider);

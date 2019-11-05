@@ -15,7 +15,9 @@ public class PriceChangeWriter implements ItemWriter<PriceChange> {
 
 	@Override
 	public void write(List<? extends PriceChange> priceChangeList) throws Exception {
-		System.out.println("PriceChangeWriter :: write :: called");
-		personChangeService.updatePCE((List<PriceChange>) priceChangeList);
+		System.out.println("\n\n\n\n--------------------------------------------------------------");
+		System.out.println("PriceChangeWriter :: write :: called::"+priceChangeList);
+		System.out.println("--------------------------------------------------------------\n\n\n\n");
+		//personChangeService.updatePCE((List<PriceChange>) priceChangeList);
 	}
 }

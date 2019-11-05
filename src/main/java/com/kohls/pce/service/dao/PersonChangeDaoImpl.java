@@ -41,6 +41,23 @@ public class PersonChangeDaoImpl implements PersonChangeDao {
 		}
 		return true;
 	}
+	
+	//CREATE TABLE `pxtw_evnt_str_mdse` (`evnt_cde` varchar(100) NOT NULL,`str_nbr` varchar(100) NOT NULL,`sku_nbr` varchar(100) NOT NULL);
+	
+	@Override
+	public boolean loadPriceChange() {
+		for (int i = 0; i <= 100; i++) {
+			Map<String, Object> paramMap = new HashMap<String, Object>();
+			paramMap.put("evnt_cde", "EVNT" + i);
+			paramMap.put("str_nbr", "STRT" + i);
+			paramMap.put("sku_nbr", "SKU" + i);
+			namedParameterJdbcTemplate.update(
+					"INSERT INTO pxtw_evnt_str_mdse(evnt_cde, str_nbr, sku_nbr) VALUES (:evnt_cde, :str_nbr, :sku_nbr); ",
+					paramMap);
+		}
+
+		return true;
+	}
 
 	class PriceChangeMapper implements RowMapper {
 		@Override

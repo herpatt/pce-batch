@@ -27,4 +27,9 @@ public class PersonChangeServiceImpl implements PersonChangeService {
 		return personChangeDao.findAllPCE(startPageNumber,pageSize,priceChange);
 	}
 
+	@Override
+	public boolean loadPriceChange() {
+		return personChangeDao.loadPriceChange();
+	}
+
 }

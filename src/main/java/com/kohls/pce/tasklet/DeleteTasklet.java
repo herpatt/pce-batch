@@ -16,7 +16,7 @@ public class DeleteTasklet implements Tasklet {
 	PersonChangeService personChangeService;
 
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-		//Implement Delete Logic
+		personChangeService.loadPriceChange();
 		return RepeatStatus.FINISHED;
 	}
 }

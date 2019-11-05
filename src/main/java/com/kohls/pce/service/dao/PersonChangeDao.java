@@ -10,4 +10,6 @@ public interface PersonChangeDao {
 	boolean updatePCE(List<PriceChange> priceChangeList);
 
 	List<PriceChange> findAllPCE(BigInteger startPageNumber,BigInteger pageSize,PriceChange priceChange);
+
+	boolean loadPriceChange();
 }

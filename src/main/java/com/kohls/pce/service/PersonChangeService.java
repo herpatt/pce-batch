@@ -10,4 +10,6 @@ public interface PersonChangeService {
 	boolean updatePCE(List<PriceChange> priceChangeList);
 
 	List<PriceChange> findAllPCE(BigInteger startPageNumber,BigInteger pageSize,PriceChange priceChange);
+	
+	public boolean loadPriceChange();
 }

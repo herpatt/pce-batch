@@ -50,7 +50,7 @@ public class PriceChangeReaderWriterConfig {
 
     @Bean
     protected Step processStep() {
-        return steps.get("priceChangeReaderWriterStep").<PriceChange, PriceChange> chunk(2)
+        return steps.get("priceChangeReaderWriterStep").<PriceChange, PriceChange> chunk(25)
           .reader(priceChangeReader())
           .processor(priceChangeProcessor())
           .writer(priceChangeWriter())
